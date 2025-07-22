@@ -21,25 +21,37 @@
       position: fixed;
       top: 0;
       left: 0;
-      width: 100%;
+      width: 100vw;  /* ceo viewport širina */
       background-color: #d94c4c;
-      padding: 0.5rem 2rem;
+      padding: 0.5rem 1rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
       z-index: 1000;
       height: 50px;
+      box-sizing: border-box;
     }
     nav h1 a {
       color: white;
       text-decoration: none;
       font-size: 1.2rem;
+      margin-left: 0;
+      cursor: pointer;
+    }
+    nav .menu {
+      display: flex;
+      align-items: center;
+      height: 50px;
+      margin-right: 0;
     }
     nav .menu a {
       color: white;
       text-decoration: none;
       font-size: 1.1rem;
       margin-left: 1.5rem;
+      cursor: pointer;
+      line-height: 50px;
+      display: inline-block;
     }
     nav a:hover {
       text-decoration: underline;
@@ -224,7 +236,7 @@
           <option value="">Izaberite proizvod</option>
           <option value="Secko za kolače">Secko za kolače</option>
           <option value="Rezervni noževi">Rezervni noževi (10 kom)</option>
-          <option value="Secko sa rezervnim noževima">Secko sa rezervnim noževima</option>
+          <option value="Secko i rezervni noževi (10)">Secko i rezervni noževi (10 kom)</option>
         </select>
         <input type="email" name="Email" placeholder="Email adresa" required />
         <button type="submit">Pošalji porudžbinu</button>
