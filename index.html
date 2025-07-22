@@ -217,11 +217,14 @@
       <h3>Porudžbina</h3>
       <form action="https://formspree.io/f/xldljbgr" method="POST">
         <input type="text" name="Ime_i_Prezime" placeholder="Ime i Prezime" required />
-        <input type="text" name="Adresa" placeholder="Adresa" required />
+        <input type="text" name="Mesto_Ulica_Broj" placeholder="Mesto, ulica, broj kuće" required />
+        <input type="text" name="Postanski_Broj" placeholder="Poštanski broj" required />
+        <input type="tel" name="Broj_Telefona" placeholder="Broj telefona" required />
         <select name="Proizvod" required>
           <option value="">Izaberite proizvod</option>
           <option value="Secko za kolače">Secko za kolače</option>
           <option value="Rezervni noževi">Rezervni noževi (10 kom)</option>
+          <option value="Secko sa rezervnim noževima">Secko sa rezervnim noževima</option>
         </select>
         <input type="email" name="Email" placeholder="Email adresa" required />
         <button type="submit">Pošalji porudžbinu</button>
