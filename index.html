@@ -4,16 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Secko za Kolače</title>
-  <!-- Font Awesome CDN za ikonice -->
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-  />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <style>
-    /* Onemogućavamo horizontalni scroll i širinu ograničavamo na 100vw */
     html, body {
       max-width: 100vw;
-      overflow-x: hidden; /* nema horizontalnog skrola */
+      overflow-x: hidden;
       margin: 0;
       padding: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -22,7 +17,6 @@
       scroll-behavior: smooth;
       box-sizing: border-box;
     }
-
     nav {
       position: fixed;
       top: 0;
@@ -34,42 +28,30 @@
       justify-content: space-between;
       align-items: center;
       z-index: 1000;
-      box-sizing: border-box;
       height: 50px;
     }
     nav h1 a {
       color: white;
       text-decoration: none;
       font-size: 1.2rem;
-      cursor: pointer;
-    }
-    nav .menu {
-      display: flex;
-      align-items: center;
-      height: 50px;
     }
     nav .menu a {
       color: white;
       text-decoration: none;
       font-size: 1.1rem;
       margin-left: 1.5rem;
-      cursor: pointer;
-      line-height: 50px;
-      display: inline-block;
     }
-    nav h1 a:hover,
-    nav .menu a:hover {
+    nav a:hover {
       text-decoration: underline;
     }
 
-    /* Uklonjen padding-top sa body, dodat padding-top u .hero */
     .hero {
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       text-align: center;
-      padding: 4rem 2rem 2rem 2rem; /* 4rem odozgo za prostor ispod menija */
+      padding: 4rem 2rem 2rem 2rem;
       background: url('SeckoPocetna.jpg') no-repeat center center;
       background-size: cover;
       color: white;
@@ -120,10 +102,9 @@
       text-align: center;
     }
 
-    /* Kontakt sekcija full width sa tamnijom pozadinom, bez bordera */
     #kontakt {
       width: 100%;
-      background-color: #a03b3b; /* tamnija crvena */
+      background-color: #a03b3b;
       padding: 2rem 0;
       color: white;
       text-align: center;
@@ -138,7 +119,6 @@
       max-width: 800px;
       margin: 0 auto;
       padding: 0 1rem;
-      box-sizing: border-box;
     }
     .kontakt-info p {
       font-size: 1.1rem;
@@ -149,26 +129,57 @@
       gap: 10px;
       color: #ffdcdc;
     }
-    .kontakt-info i {
-      font-size: 1.3rem;
-      min-width: 24px;
-      color: #ffe3e3;
+
+    /* Forma za porudžbinu */
+    .form-overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(0, 0, 0, 0.6);
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+    .form-box {
+      background-color: white;
+      padding: 2rem;
+      border-radius: 10px;
+      max-width: 400px;
+      width: 90%;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    }
+    .form-box h3 {
+      margin-bottom: 1rem;
+      color: #d94c4c;
+      text-align: center;
+    }
+    .form-box input,
+    .form-box select {
+      width: 100%;
+      padding: 0.5rem;
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+    .form-box button {
+      width: 100%;
+      padding: 0.6rem;
+      background-color: #d94c4c;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .form-box button:hover {
+      background-color: #b83d3d;
     }
 
     @media (max-width: 600px) {
-      .hero h2 {
-        font-size: 2rem;
-      }
-      .hero p {
-        font-size: 1rem;
-      }
-      nav h1 a, nav .menu a {
-        font-size: 1rem;
-        margin-left: 1rem;
-      }
-      .kontakt-info p {
-        font-size: 1rem;
-      }
+      .hero h2 { font-size: 2rem; }
+      .hero p { font-size: 1rem; }
     }
   </style>
 </head>
@@ -184,12 +195,11 @@
   <section class="hero" id="hero">
     <h2>Seckaj kao profesionalac!</h2>
     <p>Preciznost, brzina i savršen oblik — idealan dodatak za svaku kuhinju.</p>
-    <button onclick="alert('Kontaktiraj nas za porudžbinu!')">Poruči odmah</button>
+    <button onclick="document.querySelector('.form-overlay').style.display='flex'">Poruči odmah</button>
   </section>
 
   <section class="product-info" id="product-info">
     <h2>SECKA ZA KOLAČE – SAVRŠEN OBLIK U SAMO JEDNOM POTEZU! 🍰</h2>
-    <!-- Tekst je izbačen kao što je traženo -->
   </section>
 
   <section id="kontakt">
@@ -200,6 +210,24 @@
       <p><i class="fas fa-map-marker-alt"></i> Adresa: Ulica kolača 123, Beograd</p>
     </div>
   </section>
+
+  <!-- Forma za porudžbinu -->
+  <div class="form-overlay" onclick="this.style.display='none'">
+    <div class="form-box" onclick="event.stopPropagation()">
+      <h3>Porudžbina</h3>
+      <form action="https://formspree.io/f/xldljbgr" method="POST">
+        <input type="text" name="Ime_i_Prezime" placeholder="Ime i Prezime" required />
+        <input type="text" name="Adresa" placeholder="Adresa" required />
+        <select name="Proizvod" required>
+          <option value="">Izaberite proizvod</option>
+          <option value="Secko za kolače">Secko za kolače</option>
+          <option value="Rezervni noževi">Rezervni noževi (10 kom)</option>
+        </select>
+        <input type="email" name="Email" placeholder="Email adresa" required />
+        <button type="submit">Pošalji porudžbinu</button>
+      </form>
+    </div>
+  </div>
 
 </body>
 </html>
