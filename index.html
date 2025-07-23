@@ -12,8 +12,7 @@
       margin: 0;
       padding: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: url('IMG-20250702-WA0013.jpg') no-repeat center center fixed;
-      background-size: cover;
+      background-color: #fff8f2;
       color: #333;
       scroll-behavior: smooth;
       box-sizing: border-box;
@@ -35,19 +34,19 @@
     .nav-left {
       display: flex;
       align-items: center;
-      gap: 1.5rem; /* space between title and Galerija */
+      gap: 1.5rem;
     }
     .nav-left h1 {
       margin: 0;
     }
-    .nav-left h1 a, .nav-left a {
+    .nav-left h1 a {
       color: white;
       text-decoration: none;
       font-size: 1.2rem;
       line-height: 50px;
       cursor: pointer;
     }
-    .nav-left a:hover, nav a:hover {
+    .nav-left h1 a:hover {
       text-decoration: underline;
     }
     .menu {
@@ -65,6 +64,9 @@
       line-height: 50px;
       display: inline-block;
     }
+    .menu a:hover {
+      text-decoration: underline;
+    }
 
     .hero {
       display: flex;
@@ -80,6 +82,7 @@
       box-sizing: border-box;
       width: 100%;
       max-width: 100vw;
+      margin-top: 50px;
     }
     .hero h2 {
       font-size: 2.5rem;
@@ -108,19 +111,60 @@
       background-color: #e0a800;
     }
 
+    .top-images {
+      display: flex;
+      flex-direction: column;
+      height: 2200px;
+      margin: 2rem 0 4rem 0;
+      gap: 3rem;
+      position: relative;
+      box-sizing: border-box;
+    }
+    .top-images img {
+      width: 900px;
+      height: 600px;
+      object-fit: cover;
+      position: absolute;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      transition: transform 0.3s ease;
+    }
+    .top-images img:nth-child(1) {
+      top: 200px;
+      left: 0;
+    }
+    .top-images img:nth-child(2) {
+      top: 1000px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    .top-images img:nth-child(3) {
+      top: 1800px;
+      right: 0;
+    }
+    .top-images img:nth-child(1):hover,
+    .top-images img:nth-child(3):hover {
+      transform: scale(1.05);
+      z-index: 10;
+    }
+    .top-images img:nth-child(2):hover {
+      transform: scale(1.05) translateX(-50%);
+      z-index: 10;
+    }
+
     .product-info {
       max-width: 800px;
-      margin: 3rem auto 5rem auto;
+      margin: 0 auto 5rem auto;
       padding: 0 1rem;
       color: #444;
       line-height: 1.6;
       box-sizing: border-box;
+      text-align: center;
     }
     .product-info h2 {
       font-size: 2rem;
       margin-bottom: 1rem;
       color: #d94c4c;
-      text-align: center;
     }
 
     #kontakt {
@@ -151,89 +195,48 @@
       color: #ffdcdc;
     }
 
-    /* Forma za porudžbinu */
-    .form-overlay {
-      display: none;
-      position: fixed;
-      top: 0; left: 0;
-      width: 100vw;
-      height: 100vh;
-      background-color: rgba(0, 0, 0, 0.6);
-      justify-content: center;
-      align-items: center;
-      z-index: 9999;
-    }
-    .form-box {
-      background-color: white;
-      padding: 2rem;
-      border-radius: 10px;
-      max-width: 400px;
-      width: 90%;
-      box-shadow: 0 0 10px rgba(0,0,0,0.3);
-    }
-    .form-box h3 {
-      margin-bottom: 1rem;
-      color: #d94c4c;
-      text-align: center;
-    }
-    .form-box input,
-    .form-box select {
-      width: 100%;
-      padding: 0.5rem;
-      margin-bottom: 1rem;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      box-sizing: border-box;
-    }
-    .form-box button {
-      width: 100%;
-      padding: 0.6rem;
-      background-color: #d94c4c;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    .form-box button:hover {
-      background-color: #b83d3d;
-    }
-
-    @media (max-width: 600px) {
-      .hero h2 { font-size: 2rem; }
-      .hero p { font-size: 1rem; }
+    @media (max-width: 1000px) {
+      .top-images img {
+        width: 90vw;
+        height: auto;
+        position: static;
+        margin: 1rem auto;
+        display: block;
+        transform: none !important;
+      }
+      .top-images {
+        height: auto;
+        margin-bottom: 2rem;
+      }
     }
 
     .gallery-section {
       padding: 2rem 1rem;
-      background: url('IMG-20250702-WA0013.jpg') no-repeat center center fixed;
-      background-size: cover;
+      background-color: #f8f0ea;
       color: #333;
       scroll-behavior: smooth;
       box-sizing: border-box;
-      backdrop-filter: blur(5px);
-      -webkit-backdrop-filter: blur(5px);
       width: 100%;
-      box-sizing: border-box;
+      max-width: 1200px;
+      margin: 0 auto 3rem auto;
+      border-radius: 10px;
     }
 
     .gallery {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 1rem;
-      max-width: 1200px;
-      margin: 0 auto;
     }
 
     .gallery img {
       width: 100%;
-      height: auto;
+      height: 100%;
       border-radius: 10px;
       object-fit: cover;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
       transition: transform 0.3s ease;
       cursor: pointer;
     }
-
     .gallery img:hover {
       transform: scale(1.05);
     }
@@ -241,16 +244,13 @@
     .lightbox {
       display: none;
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
       background: rgba(0,0,0,0.8);
       justify-content: center;
       align-items: center;
       z-index: 10000;
     }
-
     .lightbox img {
       max-width: 90%;
       max-height: 90%;
@@ -264,7 +264,7 @@
   <nav>
     <div class="nav-left">
       <h1><a href="#hero">Secko za Kolače</a></h1>
-      <a href="#gallery" class="nav-gallery">Galerija</a>
+      <!-- Link Galerija izbačen -->
     </div>
     <div class="menu">
       <a href="#kontakt">Kontakt</a>
@@ -275,6 +275,13 @@
     <h2>Seckaj kao profesionalac!</h2>
     <p>Preciznost, brzina i savršen oblik — idealan dodatak za svaku kuhinju.</p>
     <button onclick="document.querySelector('.form-overlay').style.display='flex'">Poruči odmah!</button>
+  </section>
+
+  <!-- Tri veće slike u dijagonali -->
+  <section class="top-images">
+    <img src="slikalepa1.jpg" alt="Slika levo" />
+    <img src="slikalepa2.jpg" alt="Slika sredina" />
+    <img src="slikalepa3.jpg" alt="Slika desno" />
   </section>
 
   <section class="product-info" id="product-info">
@@ -295,7 +302,7 @@
   </section>
 
   <div id="lightbox" class="lightbox" onclick="closeLightbox()">
-    <img id="lightbox-img" src="" alt="Uvećana slika">
+    <img id="lightbox-img" src="" alt="Uvećana slika" />
   </div>
 
   <section id="kontakt">
@@ -328,17 +335,18 @@
     </div>
   </div>
 
-<script>
-  function openLightbox(img) {
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImg = document.getElementById('lightbox-img');
-    lightboxImg.src = img.src;
-    lightbox.style.display = 'flex';
-  }
+  <script>
+    function openLightbox(img) {
+      const lightbox = document.getElementById('lightbox');
+      const lightboxImg = document.getElementById('lightbox-img');
+      lightboxImg.src = img.src;
+      lightbox.style.display = 'flex';
+    }
 
-  function closeLightbox() {
-    document.getElementById('lightbox').style.display = 'none';
-  }
-</script>
+    function closeLightbox() {
+      document.getElementById('lightbox').style.display = 'none';
+    }
+  </script>
+
 </body>
 </html>
