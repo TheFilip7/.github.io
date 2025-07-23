@@ -12,39 +12,51 @@
       margin: 0;
       padding: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #fff8f2;
+      background: url('IMG-20250702-WA0013.jpg') no-repeat center center fixed;
+      background-size: cover;
       color: #333;
       scroll-behavior: smooth;
       box-sizing: border-box;
     }
     nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;  /* ceo viewport širina */
-      background-color: #d94c4c;
-      padding: 0.5rem 1rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      z-index: 1000;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      background-color: #d94c4c;
+      padding: 0.5rem 1rem;
       height: 50px;
       box-sizing: border-box;
+      z-index: 1000;
     }
-    nav h1 a {
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem; /* space between title and Galerija */
+    }
+    .nav-left h1 {
+      margin: 0;
+    }
+    .nav-left h1 a, .nav-left a {
       color: white;
       text-decoration: none;
       font-size: 1.2rem;
-      margin-left: 0;
+      line-height: 50px;
       cursor: pointer;
     }
-    nav .menu {
+    .nav-left a:hover, nav a:hover {
+      text-decoration: underline;
+    }
+    .menu {
       display: flex;
       align-items: center;
       height: 50px;
       margin-right: 0;
     }
-    nav .menu a {
+    .menu a {
       color: white;
       text-decoration: none;
       font-size: 1.1rem;
@@ -52,9 +64,6 @@
       cursor: pointer;
       line-height: 50px;
       display: inline-block;
-    }
-    nav a:hover {
-      text-decoration: underline;
     }
 
     .hero {
@@ -193,12 +202,70 @@
       .hero h2 { font-size: 2rem; }
       .hero p { font-size: 1rem; }
     }
+
+    .gallery-section {
+      padding: 2rem 1rem;
+      background: url('IMG-20250702-WA0013.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #333;
+      scroll-behavior: smooth;
+      box-sizing: border-box;
+      backdrop-filter: blur(5px);
+      -webkit-backdrop-filter: blur(5px);
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      object-fit: cover;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+
+    .lightbox {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0,0,0,0.8);
+      justify-content: center;
+      align-items: center;
+      z-index: 10000;
+    }
+
+    .lightbox img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(255,255,255,0.5);
+    }
   </style>
 </head>
 <body>
 
   <nav>
-    <h1><a href="#hero">Secko za Kolače</a></h1>
+    <div class="nav-left">
+      <h1><a href="#hero">Secko za Kolače</a></h1>
+      <a href="#gallery" class="nav-gallery">Galerija</a>
+    </div>
     <div class="menu">
       <a href="#kontakt">Kontakt</a>
     </div>
@@ -207,19 +274,36 @@
   <section class="hero" id="hero">
     <h2>Seckaj kao profesionalac!</h2>
     <p>Preciznost, brzina i savršen oblik — idealan dodatak za svaku kuhinju.</p>
-    <button onclick="document.querySelector('.form-overlay').style.display='flex'">Poruči odmah</button>
+    <button onclick="document.querySelector('.form-overlay').style.display='flex'">Poruči odmah!</button>
   </section>
 
   <section class="product-info" id="product-info">
     <h2>SECKA ZA KOLAČE – SAVRŠEN OBLIK U SAMO JEDNOM POTEZU! 🍰</h2>
   </section>
 
+  <section class="gallery-section" id="gallery">
+    <div class="gallery">
+      <img src="IMG-20250702-WA0001.jpg" alt="Secko kolača 1" onclick="openLightbox(this)">
+      <img src="IMG-20250702-WA0005.jpg" alt="Secko kolača 2" onclick="openLightbox(this)">
+      <img src="IMG-20250702-WA0007.jpg" alt="Slika 3" onclick="openLightbox(this)">
+      <img src="IMG-20250702-WA0009.jpg" alt="Slika 4" onclick="openLightbox(this)">
+      <img src="IMG-20250702-WA0011.jpg" alt="Secko kolača 5" onclick="openLightbox(this)">
+      <img src="IMG-20250702-WA0013.jpg" alt="Secko kolača 6" onclick="openLightbox(this)">
+      <img src="IMG-20250702-WA0003.jpg" alt="Secko kolača 7" onclick="openLightbox(this)">
+      <img src="IMG-20250702-WA0017.jpg" alt="Secko kolača 8" onclick="openLightbox(this)">
+    </div>
+  </section>
+
+  <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+    <img id="lightbox-img" src="" alt="Uvećana slika">
+  </div>
+
   <section id="kontakt">
     <h2>Kontakt</h2>
     <div class="kontakt-info">
       <p><i class="fas fa-phone"></i> Telefon: <strong>+381 64 0901688</strong></p>
       <p><i class="fas fa-envelope"></i> Email: <a href="mailto:seckokolac@gmail.com">seckokolac@gmail.com</a></p>
-      <p><i class="fas fa-map-marker-alt"></i> Adresa: Ulica kolača 123, Beograd</p>
+      <p><i class="fas fa-map-marker-alt"></i> Adresa: Lovačka 4, Donje Crniljevo</p>
     </div>
   </section>
 
@@ -244,5 +328,17 @@
     </div>
   </div>
 
+<script>
+  function openLightbox(img) {
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    lightboxImg.src = img.src;
+    lightbox.style.display = 'flex';
+  }
+
+  function closeLightbox() {
+    document.getElementById('lightbox').style.display = 'none';
+  }
+</script>
 </body>
 </html>
