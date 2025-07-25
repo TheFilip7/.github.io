@@ -132,13 +132,20 @@
       background-color: #fff8f2;
     }
 
-    .video-wrapper {
+    .shorts-wrapper {
       width: 100%;
-      max-width: 900px;
-      aspect-ratio: 16 / 9;
+      max-width: 360px;
+      aspect-ratio: 9 / 16;
+      border-radius: 15px;
       overflow: hidden;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      background-color: #000;
+    }
+
+    @media (max-width: 400px) {
+      .shorts-wrapper {
+        max-width: 90vw;
+      }
     }
 
     .product-info {
@@ -216,7 +223,6 @@
       color: #ffdcdc;
     }
 
-    /* Forma */
     .form-overlay {
       display: none;
       position: fixed;
@@ -295,7 +301,7 @@
   </section>
 
   <section class="video-section">
-    <div class="video-wrapper">
+    <div class="shorts-wrapper">
       <div id="yt-player"></div>
     </div>
   </section>
@@ -351,19 +357,8 @@
   </div>
 
   <script>
-    function openLightbox(img) {
-      const lightbox = document.getElementById('lightbox');
-      const lightboxImg = document.getElementById('lightbox-img');
-      lightboxImg.src = img.src;
-      lightbox.style.display = 'flex';
-    }
-
-    function closeLightbox() {
-      document.getElementById('lightbox').style.display = 'none';
-    }
-
-    // YOUTUBE AUTOPLAY/PAUSE
     let player;
+
     const tag = document.createElement('script');
     tag.src = "https://www.youtube.com/iframe_api";
     const firstScriptTag = document.getElementsByTagName('script')[0];
@@ -371,10 +366,15 @@
 
     function onYouTubeIframeAPIReady() {
       player = new YT.Player('yt-player', {
-        height: '500',
+        height: '100%',
         width: '100%',
-        videoId: 'EjBcDi7m2OM',
-        playerVars: { autoplay: 0, controls: 1, rel: 0, modestbranding: 1 }
+        videoId: 'bwV3Q3GDO6o',
+        playerVars: {
+          autoplay: 0,
+          controls: 1,
+          rel: 0,
+          modestbranding: 1
+        }
       });
     }
 
@@ -400,7 +400,16 @@
     }
 
     setTimeout(checkAndObserve, 1000);
-  </script>
 
+    function openLightbox(img) {
+      document.getElementById('lightbox-img').src = img.src;
+      document.getElementById('lightbox').style.display = 'flex';
+    }
+
+    function closeLightbox() {
+      document.getElementById('lightbox').style.display = 'none';
+      document.getElementById('lightbox-img').src = '';
+    }
+  </script>
 </body>
 </html>
